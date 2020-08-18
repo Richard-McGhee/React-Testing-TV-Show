@@ -1,6 +1,7 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, getByText } from '@testing-library/react'
 import { fetchShow as mockFetchShow } from './utils/fetchShow'
+import userEvent from '@testing-library/user-event'
 import App from './App'
 
 jest.mock('./utils/fetchShow')
@@ -611,6 +612,16 @@ const showData = {
 
       await waitFor(() => {
         const showTitle = screen.getByText(/a love letter/i)
+        const dropMenu = screen.getByText(/select a season/i)
         expect(showTitle).toBeInTheDocument
+        expect(dropMenu).toBeInTheDocument
       })
+
+      const dropMenu = screen.getByText(/select a season/i)
+      userEvent.click(dropMenu)
+
+      const seasonOne = screen.getByText(/season 1/i)
+      userEvent.click(seasonOne)
+      
+      expect(screen.getByText(/the bathtub/i)).toBeInTheDocument
   })
