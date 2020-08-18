@@ -605,7 +605,7 @@ const showData = {
     }
   }
 
-  test("renders the front page with api v", async () => {
+  test("renders the front page with api call and selects a season to display", async () => {
       mockFetchShow.mockResolvedValueOnce(showData)
 
       render(<App />)
@@ -622,6 +622,6 @@ const showData = {
 
       const seasonOne = screen.getByText(/season 1/i)
       userEvent.click(seasonOne)
-      
+
       expect(screen.getByText(/the bathtub/i)).toBeInTheDocument
   })
