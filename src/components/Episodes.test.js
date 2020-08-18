@@ -2,7 +2,7 @@ import React from 'react'
 import Episodes from './Episodes'
 import { render, screen} from '@testing-library/react'
 
-const episodes = [
+export const episodes = [
     {
       id: 553946,
       url: 'http://www.tvmaze.com/episodes/553946/stranger-things-1x01-chapter-one-the-vanishing-of-will-byers',
